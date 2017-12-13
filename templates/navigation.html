@@ -1,0 +1,17 @@
+<nav class="navbar navbar-default">
+  <div class="container-fluid">
+    <div class="navbar-header">
+      <a class="navbar-brand" href="{{ url_for('common.main') }}">Simple weather</a>
+    </div>
+    <ul class="nav navbar-nav">
+    </ul>
+    <ul class="nav navbar-nav navbar-right">
+      {#% if current_user.is_authenticated %#}
+        <li><a href="{{ url_for('profile.logout') }}"> Hi {#{ current_user.username }#}!, Logout</a></li>
+      {#% else %#}
+        <li><a href="{{ url_for('profile.login') }}">Login</a></li>
+        <li><a href="{{ url_for('profile.registration') }}">Register</a></li>
+      {#% endif %#}
+    </ul>
+  </div>
+</nav>

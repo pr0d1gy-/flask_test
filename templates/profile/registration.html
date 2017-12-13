@@ -1,0 +1,48 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<div class="container">
+    <div id="loginbox" class="mainbox col-md-6 col-md-offset-3 col-sm-6 col-sm-offset-3">
+        <div class="panel panel-default" >
+            <div class="panel-heading">
+                <div class="panel-title text-center">Welcome!</div>
+            </div>
+            <div class="panel-body" >
+
+                <form method="POST" action="{{ url_for('profile.registration') }}">
+                  {{ form.hidden_tag() }}
+                  <div>{{ form.username.label }}: {{ form.username() }}
+                    {% if form.username.errors %}
+                      <ul class=errors>
+                        {% for error in form.username.errors %}
+                          <li class="text-danger">{{ error }}</li>
+                        {% endfor %}
+                      </ul>
+                    {% endif %}
+                  </div>
+                  <div>{{ form.password.label }}: {{ form.password() }}
+                    {% if form.password.errors %}
+                      <ul class=errors>
+                        {% for error in form.password.errors %}
+                          <li class="text-danger">{{ error }}</li>
+                        {% endfor %}
+                      </ul>
+                    {% endif %}
+                  </div>
+                  <div>{{ form.password_confirm.label }}: {{ form.password_confirm() }}
+                    {% if form.password_confirm.errors %}
+                      <ul class=errors>
+                        {% for error in form.password_confirm.errors %}
+                          <li class="text-danger">{{ error }}</li>
+                        {% endfor %}
+                      </ul>
+                    {% endif %}
+                  </div>
+                  <input type="submit" value="Register">
+                </form>
+
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}
